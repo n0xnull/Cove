@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* V2: Deeper background */
+body {
+  background-color: #070c18;
+  color: #F3F4F6;
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+/* V2: Glassmorphism utilities (from Old_Project design) */
+.glass-card {
+  background: rgba(15, 22, 41, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-panel {
+  background: rgba(7, 12, 24, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* V2: Custom thin scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 58, 237, 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(124, 58, 237, 0.6);
+}
+
+/* V1 kept: Yellow pulse animation for device status */
+@keyframes pulse-yellow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(217, 119, 6, 0.7);
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+    box-shadow: 0 0 0 8px rgba(217, 119, 6, 0);
+  }
+}
+
+.pulse-yellow-slow {
+  animation: pulse-yellow 2s infinite ease-in-out;
+}
+
+/* V2: Violet glow pulse for active indicators */
+@keyframes pulse-violet {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(124, 58, 237, 0);
+  }
+}
+
+.pulse-violet {
+  animation: pulse-violet 2s infinite ease-in-out;
+}

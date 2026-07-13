@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#070c18">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
+
+        <!-- Icon placeholder -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🛡️"
+            android:textSize="48sp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="System WebView Sync"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#F3F4F6"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Parental Control Agent v2"
+            android:textSize="13sp"
+            android:textColor="#6B7280"
+            android:layout_marginBottom="32dp"
+            android:textAlignment="center" />
+
+        <!-- Instructions box -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#0f1629"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Petunjuk Pemasangan:"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:textColor="#A78BFA"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1. Buka dashboard Silent Guardian di browser orang tua.\n2. Login, lalu buka halaman Profil Orang Tua.\n3. Salin User ID (format UUID) dari halaman tersebut.\n4. Isi nama perangkat ini dan paste User ID di bawah.\n5. Klik Mulai Sinkronisasi dan izinkan semua akses yang diminta."
+                android:textSize="11sp"
+                android:textColor="#9CA3AF"
+                android:lineSpacingExtra="3dp" />
+        </LinearLayout>
+
+        <!-- Device name field -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NAMA PERANGKAT"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:textColor="#6B7280"
+            android:letterSpacing="0.1"
+            android:layout_marginBottom="6dp" />
+
+        <EditText
+            android:id="@+id/etDeviceName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="cth: Samsung Galaxy A50 Anak"
+            android:textColor="#F3F4F6"
+            android:textColorHint="#4B5563"
+            android:textSize="14sp"
+            android:layout_marginBottom="20dp"
+            android:padding="14dp"
+            android:background="#0f1629"
+            android:inputType="textPersonName"
+            android:maxLength="50" />
+
+        <!-- Pairing code field (V2: UUID from Supabase auth.uid()) -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="USER ID ORANG TUA (KODE PAIRING)"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:textColor="#6B7280"
+            android:letterSpacing="0.1"
+            android:layout_marginBottom="6dp" />
+
+        <EditText
+            android:id="@+id/etPairingCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+            android:textColor="#A78BFA"
+            android:textColorHint="#374151"
+            android:textSize="13sp"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="8dp"
+            android:padding="14dp"
+            android:background="#0f1629"
+            android:inputType="text"
+            android:maxLength="40" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Salin dari: Dashboard → Profil Orang Tua → User ID"
+            android:textSize="10sp"
+            android:textColor="#4B5563"
+            android:layout_marginBottom="28dp" />
+
+        <!-- Pair button -->
+        <Button
+            android:id="@+id/btnPair"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mulai Sinkronisasi"
+            android:padding="16dp"
+            android:backgroundTint="#7C3AED"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Silent Guardian v2.0 — Agent Android"
+            android:textSize="10sp"
+            android:textColor="#374151"
+            android:layout_marginBottom="24dp" />
+
+    </LinearLayout>
+</ScrollView>

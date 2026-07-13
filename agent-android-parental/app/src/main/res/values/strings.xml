@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">System WebView Sync</string>
+    <string name="device_admin_description">Layanan sinkronisasi keamanan data sistem operasi Android WebView.</string>
+</resources>

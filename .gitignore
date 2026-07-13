@@ -1,0 +1,69 @@
+# ══════════════════════════════════════
+# Silent Guardian — root .gitignore
+# ══════════════════════════════════════
+
+# ── Android / Gradle ──────────────────
+*.iml
+.gradle/
+local.properties
+.idea/
+.DS_Store
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+*.ap_
+*.dex
+agent-android-parental/.gradle/
+agent-android-parental/build/
+agent-android-parental/app/build/
+agent-android-parental/local.properties
+
+# Signing keys — JANGAN PERNAH di-commit
+*.keystore
+*.jks
+keystore.properties
+
+# ── Next.js / Node ────────────────────
+dashboard-web-parental/node_modules/
+dashboard-web-parental/.next/
+dashboard-web-parental/out/
+
+# Environment variables — RAHASIA
+dashboard-web-parental/.env
+dashboard-web-parental/.env.local
+dashboard-web-parental/.env.*.local
+
+# Vercel
+dashboard-web-parental/.vercel
+
+# ── OS ───────────────────────────────
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ── Logs ─────────────────────────────
+*.log
+npm-debug.log*
+
+# ── Build / dist (lokal) ─────────────
+dist/
+
+# ── Internal planning / dev artifacts ─
+GAP-ANALYSIS*.md
+UPGRADE-CONCEPT*.md
+WEB-DESIGN-COMPARISON*.md
+how-to-run.txt
+Silent-Guardian*.mp4
+
+# ── Dashboard dev artifacts ───────────
+dashboard-web-parental/start-fresh.bat
+dashboard-web-parental/tsconfig.tsbuildinfo
+dashboard-web-parental/next-env.d.ts
+
+# ── Supabase: hanya schema.sql yang relevan ─
+supabase/schema_v*.sql
+supabase/migrate_*.sql
+supabase/fix_rls*.sql

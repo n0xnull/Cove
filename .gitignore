@@ -63,7 +63,7 @@ dashboard-web-parental/start-fresh.bat
 dashboard-web-parental/tsconfig.tsbuildinfo
 dashboard-web-parental/next-env.d.ts
 
-# ── Supabase: hanya schema.sql yang relevan ─
-supabase/schema_v*.sql
-supabase/migrate_*.sql
-supabase/fix_rls*.sql
+# ── Supabase: exclude schema lama, tapi tetap include v5 (production) ─
+supabase/schema_v3.sql
+supabase/schema_v4.sql
+# schema_v5.sql, migrate_*.sql, fix_rls*.sql TIDAK di-exclude — diperlukan untuk setup

@@ -176,7 +176,7 @@ export default function AppInventoryPage() {
     setConfirmClear(false);
     try {
       await supabase.from('installed_apps').delete().eq('device_id', device.id);
-      await fetchData();
+      await fetchAppsData();
     } catch (err: any) {
       console.error('Clear all failed', err);
     } finally {

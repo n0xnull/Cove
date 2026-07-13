@@ -204,20 +204,24 @@ export default function ScreenScrapesPage() {
     }
   };
 
-  const filteredLogs = logs.filter(log => {
+  const ocrFilteredLogs = selectedOcrPackages.length > 0
+    ? logs.filter(log => selectedOcrPackages.includes(log.app_package))
+    : logs;
+
+  const filteredLogs = ocrFilteredLogs.filter(log => {
     const matchesSearch = log.scraped_text.toLowerCase().includes(searchQuery.toLowerCase()) ||
       log.app_package.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesSuspicious = filterSuspicious === 'all' || log.is_suspicious === filterSuspicious;
     return matchesSearch && matchesSuspicious;
   });
 
-  const filteredInstalledApps = installedApps.filter(app => 
+  const filteredInstalledApps = installedApps.filter(app =>
     app.app_name.toLowerCase().includes(searchAppQuery.toLowerCase()) ||
     app.app_package.toLowerCase().includes(searchAppQuery.toLowerCase())
   );
 
-  const totalLogs = logs.length;
-  const suspiciousCount = logs.filter(l => l.is_suspicious).length;
+  const totalLogs = ocrFilteredLogs.length;
+  const suspiciousCount = ocrFilteredLogs.filter(l => l.is_suspicious).length;
 
   if (loading && !device) {
     return (

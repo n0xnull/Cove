@@ -126,7 +126,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             </span>
             <div>
               <span className="font-bold tracking-wide text-sm bg-gradient-to-r from-violetLight to-accentBlue bg-clip-text text-transparent">
-                Silent Guardian
+                Cove
               </span>
               <p className="text-[10px] text-textSecondary font-medium">Panel Pengawasan Orang Tua</p>
             </div>
@@ -213,7 +213,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <LogOut size={16} />
           {loggingOut ? 'Keluar...' : 'Keluar Panel'}
         </button>
-        <p className="text-[10px] text-textSecondary/50 text-center mt-3">Silent Guardian v2.0</p>
+        <p className="text-[10px] text-textSecondary/50 text-center mt-3">Cove v1.0 — NoxNull</p>
       </div>
     </>
   );
@@ -227,7 +227,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <ShieldCheck size={18} />
           </span>
           <span className="font-bold text-sm tracking-wide bg-gradient-to-r from-violetLight to-accentBlue bg-clip-text text-transparent">
-            Silent Guardian
+            Cove
           </span>
         </div>
         <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-textPrimary">

@@ -43,7 +43,7 @@ function LoginForm() {
             <ShieldCheck size={32} />
           </div>
           <h1 className="text-2xl font-bold tracking-tight bg-gradient-to-r from-violetLight to-accentBlue bg-clip-text text-transparent">
-            Silent Guardian
+            Cove
           </h1>
           <p className="text-sm text-textSecondary mt-1.5 text-center">
             Panel Pengawasan Orang Tua — Masuk untuk melanjutkan
@@ -125,7 +125,7 @@ function LoginForm() {
 
         <div className="mt-6 text-center">
           <p className="text-xs text-textSecondary/70">
-            Silent Guardian v2.0 — Kompatibel dengan Agent WebView Sync
+            Cove v1.0 — Kompatibel dengan Agent WebView Sync
           </p>
         </div>
       </div>

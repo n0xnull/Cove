@@ -100,7 +100,7 @@ export default function ApkPage() {
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Unduh APK Agent</h1>
           <p className="text-textSecondary mt-1 text-sm">
-            Kelola dan distribusikan APK aplikasi Silent Guardian ke HP anak
+            Kelola dan distribusikan APK aplikasi Cove ke HP anak
           </p>
         </div>
         <button onClick={() => fetchApks()} className="p-2.5 glass-card rounded-xl text-textSecondary hover:text-textPrimary">

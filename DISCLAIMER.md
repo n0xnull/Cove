@@ -1,17 +1,17 @@
 # ⚠️ Disclaimer
 
-**Silent Guardian is intended exclusively for lawful parental monitoring of
-minor children by their legal guardian, on devices that you own or have full
-legal authority over.**
+**Cove is intended exclusively for lawful parental monitoring of minor children
+by their legal guardian, on devices that you own or have full legal authority
+over.**
 
 By installing, configuring, or using this software you agree to all of the
 following:
 
 1. **Authorized use only.**
-   You will only install the Silent Guardian agent on a device that you own
-   **and** that is used by a minor child for whom you are the legal parent or
-   guardian. Installing monitoring software on an adult's device without their
-   knowledge and consent is **illegal** in most jurisdictions.
+   You will only install the Cove agent on a device that you own **and** that
+   is used by a minor child for whom you are the legal parent or guardian.
+   Installing monitoring software on an adult's device without their knowledge
+   and consent is **illegal** in most jurisdictions.
 
 2. **Legal compliance.**
    You are solely responsible for ensuring that your use of this software
@@ -25,10 +25,10 @@ following:
    offence in most countries.
 
 4. **No liability.**
-   The author (Abil Khosim / Abilithic) and contributors accept **no
-   liability** for any misuse, damage, legal consequence, or harm arising from
-   the use of this software. Responsibility for lawful and ethical use rests
-   entirely with the person deploying the software.
+   The author (Abil Khosim / NoxNull) and contributors accept **no liability**
+   for any misuse, damage, legal consequence, or harm arising from the use of
+   this software. Responsibility for lawful and ethical use rests entirely with
+   the person deploying the software.
 
 5. **Data security.**
    All monitoring data is transmitted to a Supabase instance that **you

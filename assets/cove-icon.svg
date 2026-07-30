@@ -1,0 +1,19 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cove">
+  <defs>
+    <linearGradient id="panelBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#122420"/><stop offset="1" stop-color="#0A1416"/>
+    </linearGradient>
+    <linearGradient id="arcGrad" x1="0" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#7EDDCC"/><stop offset="0.5" stop-color="#27B89C"/><stop offset="1" stop-color="#0F8A73"/>
+    </linearGradient>
+    <radialGradient id="dotGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#E8FBF7"/><stop offset="0.6" stop-color="#7EDDCC"/><stop offset="1" stop-color="#27B89C"/>
+    </radialGradient>
+  </defs>
+  <rect x="2" y="2" width="252" height="252" rx="54" fill="url(#panelBg)"/>
+  <rect x="2.5" y="2.5" width="251" height="251" rx="53.5" fill="none" stroke="#FFFFFF" stroke-opacity="0.06" stroke-width="1"/>
+  <path d="M40.00,128.00 A88.00,88.00 0 0,1 216.00,128.00" fill="none" stroke="url(#arcGrad)" stroke-width="14.00" stroke-linecap="round"/>
+  <path d="M66.00,128.00 A62.00,62.00 0 0,1 190.00,128.00" fill="none" stroke="url(#arcGrad)" stroke-width="10.00" stroke-linecap="round"/>
+  <path d="M92.00,128.00 A36.00,36.00 0 0,1 164.00,128.00" fill="none" stroke="url(#arcGrad)" stroke-width="7.00" stroke-linecap="round"/>
+  <circle cx="128.00" cy="112.00" r="10.00" fill="url(#dotGlow)"/>
+</svg>

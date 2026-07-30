@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to Silent Guardian are documented here.
+All notable changes to **Cove** are documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/);
 versioning follows [SemVer](https://semver.org/).
 
@@ -8,9 +8,13 @@ versioning follows [SemVer](https://semver.org/).
 
 ## [1.0.0] — 2026
 
+> Initial public release. Rebranded from internal codename *Silent Guardian*
+> to **Cove** as part of the NoxNull toolkit.
+
 ### Added
 
 #### Android Agent
+
 - Background sync service with WorkManager + foreground notification.
 - PIN-based pairing flow — generates unique PIN per child, no account needed.
 - Automatic launcher icon hiding after successful pairing.
@@ -35,6 +39,7 @@ versioning follows [SemVer](https://semver.org/).
 - Device admin registration for tamper resistance.
 
 #### Web Dashboard (Next.js 15 + Supabase)
+
 - Dark-themed responsive dashboard with collapsible sidebar navigation.
 - **Daftar Anak** — multi-child management with PIN generation.
 - **Overview / Lokasi** — live GPS map (MapLibre GL).
@@ -58,3 +63,11 @@ versioning follows [SemVer](https://semver.org/).
 - Polling fallback for environments where realtime is not configured.
 - Clear All function per page with storage cleanup.
 - Multi-device selector with localStorage persistence.
+
+---
+
+## [Unreleased]
+
+- Push notifications to parent on new alert.
+- Screen time analytics and app usage limits.
+- Multi-language dashboard (EN / ID).

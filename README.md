@@ -1,10 +1,10 @@
 <div align="center">
 
-<img src="assets/silent-guardian-icon-256.png" alt="Silent Guardian" width="120"/>
+<img src="assets/cove-icon-256.png" alt="Cove" width="120"/>
 
-# 🔒 Silent Guardian
+# 🛡️ Cove
 
-### Parental Monitoring, Done Right — *know what's happening on your child's phone, before it's too late.*
+### Parental Digital Safety Platform — *Protected. Always.*
 
 A two-part system: an invisible **Android agent** that silently collects
 activity from the child's device, and a **web dashboard** you open from any
@@ -15,11 +15,12 @@ typed text, screenshots, recordings, and more.
 [![Platform](https://img.shields.io/badge/platform-Android%207%2B-brightgreen.svg)]()
 [![Dashboard](https://img.shields.io/badge/dashboard-Next.js%2015-black.svg)]()
 [![Backend](https://img.shields.io/badge/backend-Supabase-3ECF8E.svg)](https://supabase.com)
+[![Release](https://img.shields.io/github/v/release/n0xnull/Cove)](../../releases)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Abil%20Khosim-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/abil-khosim-itsec/)
 
 [⬇️ Download APK](#-installation) · [✨ Features](#-key-features) · [📖 Setup](#-setup-guide) · [🖥️ Dashboard](#-dashboard) · [⚠️ Disclaimer](DISCLAIMER.md)
 
-<img src="assets/silent-guardian-banner.png" alt="Silent Guardian Dashboard" width="820"/>
+<img src="assets/cove-horizontal-1200.png" alt="Cove — Protected. Always." width="520"/>
 
 </div>
 
@@ -33,16 +34,19 @@ inappropriate content, online predators, and excessive screen time are real.
 Existing parental-control apps are expensive, subscription-based, or easily
 bypassed by tech-savvy kids.
 
-**Silent Guardian** runs invisibly on the child's Android device, syncs all
-activity to a **Supabase backend you control**, and presents it in a clean web
-dashboard you access from any device — no subscriptions, no third-party data
-access, full ownership.
+**Cove** runs invisibly on the child's Android device, syncs all activity to a
+**Supabase backend you control**, and presents it in a clean web dashboard you
+access from any device — no subscriptions, no third-party data access, full
+ownership.
 
----
+> ⚠️ Cove is a **lawful-use-only** parental monitoring tool. Deploy it only on
+> devices you own and that are used by minor children for whom you are the legal
+> guardian. See [DISCLAIMER.md](DISCLAIMER.md).
 
 ## ✨ Key Features
 
 ### 📱 Android Agent
+
 - 🕵️ **Invisible after setup** — launcher icon is hidden after pairing; runs as a background service.
 - 📞 **Call & SMS monitoring** — logs every call and message with contact names.
 - ⌨️ **Keylogger** — captures typed text across all apps via Accessibility Service.
@@ -59,6 +63,7 @@ access, full ownership.
 - 🚨 **Keyword alerts** — configurable dangerous-keyword detection (HIGH / MEDIUM / LOW severity).
 
 ### 🖥️ Web Dashboard
+
 - 📊 **Unified media gallery** — screenshots, camera photos, audio, video, and downloaded files in one place.
 - 💬 **Social chat viewer** — grouped by contact and app; highlights suspicious keywords.
 - 🗺️ **Live map** — GPS location history on an interactive map.
@@ -66,11 +71,11 @@ access, full ownership.
 - ⚡ **Realtime updates** — new data appears instantly via Supabase Realtime.
 - 🌐 **Deployable to Vercel** — access your dashboard from anywhere, no local server needed.
 
----
-
 ## 🖼️ Screenshots
 
-<div align="center">
+> *Add screenshots to `assets/` and uncomment the lines below.*
+
+<!-- <div align="center">
 
 **Dashboard overview**
 <img src="assets/screenshot-overview.png" alt="Dashboard overview" width="820"/>
@@ -84,13 +89,31 @@ access, full ownership.
 **File browser — browse and download from device storage**
 <img src="assets/screenshot-files.png" alt="File browser" width="820"/>
 
-</div>
+</div> -->
 
----
+## ⚙️ Architecture
+
+```
+Child's Android device
+  → Agent collects: calls, SMS, notifications, keystrokes, screen text,
+                    location, contacts, installed apps, media
+  → Syncs to Supabase REST API (local queue + exponential backoff)
+  → Realtime channel pushes updates to dashboard instantly
+
+Parent's browser (dashboard)
+  → Reads from Supabase tables in real time
+  → Sends commands: screenshot / camera / microphone / video / file transfer
+  → Agent polls every 15 seconds for pending commands → executes → uploads result
+  → Dashboard receives result via Supabase Realtime or polling fallback
+```
+
+**Your data stays yours.** Everything goes to the Supabase project you created —
+the author has zero access to any monitoring data.
 
 ## 💻 System Requirements
 
 ### Android Agent (child's phone)
+
 | | Minimum |
 |---|---|
 | Android | **7.0 (API 24)** or higher |
@@ -99,26 +122,24 @@ access, full ownership.
 | Permissions | Accessibility Service, Notification Listener, Location, Camera, Microphone, Storage |
 
 ### Web Dashboard
+
 | | |
 |---|---|
 | Hosting | Vercel (recommended) or any Node.js host |
 | Backend | Supabase (free tier sufficient) |
 | Browser | Any modern browser (Chrome, Edge, Firefox, Safari) |
 
----
-
 ## ⬇️ Installation
 
 ### For parents (recommended)
+
 1. Go to **[Releases](../../releases)**.
-2. Download `SilentGuardian.apk` (latest version).
+2. Download `Cove.apk` (latest version).
 3. Transfer the APK to the child's Android device.
 4. On the child's device: enable **"Install from unknown sources"** (Settings → Apps → Special App Access → Install Unknown Apps).
 5. Install the APK and open it — follow the pairing steps below.
 
 > **Alternatively:** if you have the web dashboard running, go to **Unduh APK** in the sidebar to download the latest APK directly.
-
----
 
 ## 📖 Setup Guide
 
@@ -157,8 +178,6 @@ access, full ownership.
 4. Enter the PIN → tap **Pasangkan**.
 5. The launcher icon disappears — the agent is now running silently.
 
----
-
 ## 🖥️ Dashboard
 
 Access from any browser at your Vercel URL (or `http://localhost:3000` for local development):
@@ -186,62 +205,34 @@ npm run dev
 | **Pengaturan Alert** | Configure keyword alerts by severity |
 | **Unduh APK** | Host and download the agent APK |
 
----
+## 🔒 Security Notes
 
-## ⚙️ How It Works
-
-```
-Child's Android device
-  → Agent collects: calls, SMS, notifications, keystrokes, screen text,
-                    location, contacts, installed apps, media
-  → Syncs to Supabase REST API (local queue + exponential backoff)
-  → Realtime channel pushes updates to dashboard instantly
-
-Parent's browser (dashboard)
-  → Reads from Supabase tables in real time
-  → Sends commands: screenshot / camera / microphone / video / file transfer
-  → Agent polls every 15 seconds for pending commands → executes → uploads result
-  → Dashboard receives result via Supabase Realtime or polling fallback
-```
-
-**Your data stays yours.** Everything goes to the Supabase project you created —
-the author has zero access to any monitoring data.
-
----
+- The dashboard has **no built-in authentication**. Deploy it behind a private URL or Vercel password protection — do not expose it publicly.
+- All monitoring data is encrypted in transit via Supabase TLS. Row Level Security (RLS) is configured in `supabase/schema.sql`.
+- Your `SUPABASE_SERVICE_ROLE_KEY` has admin access — never commit it; keep it only in Vercel environment variables.
 
 ## 🗺️ Roadmap
 
+- **v1.0** *(current)* — Full Android agent + Next.js 15 dashboard, all monitoring features, Supabase backend.
 - **v1.1** — Push notifications to parent (new alert → push to phone/browser).
 - **v1.2** — Screen time analytics, app usage limits, website blocking.
 - **v2.0** — Multi-language dashboard (EN / ID), iOS companion app.
 
----
-
 ## 🤝 Contributing
 
-Issues and pull requests are welcome. See the project structure:
+Issues and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-```
-silent-guardian/
-├── agent-android-parental/   # Kotlin Android app (Android Studio)
-├── dashboard-web-parental/   # Next.js 15 web dashboard
-├── supabase/                 # SQL schema and migrations
-└── assets/                   # Screenshots and branding
-```
-
----
+Found a security issue? Report it via [SECURITY.md](SECURITY.md) — please don't open a public issue.
 
 ## ⚠️ Disclaimer
 
-For **lawful parental monitoring of minor children only**. You must own the
-device or have legal authority over it. Monitoring an adult without their
+**Cove is for lawful parental monitoring of minor children only.** You must own
+the device or have legal authority over it. Monitoring an adult without their
 knowledge and consent is illegal in most jurisdictions. See [DISCLAIMER.md](DISCLAIMER.md).
-
----
 
 ## 📄 License
 
-[MIT](LICENSE) © Abilithic.
+[MIT](LICENSE) © Abil Khosim.
 
 ---
 
@@ -251,11 +242,16 @@ knowledge and consent is illegal in most jurisdictions. See [DISCLAIMER.md](DISC
 **Cybersecurity Specialist**
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Abil%20Khosim-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/abil-khosim-itsec/)
+[![GitHub](https://img.shields.io/badge/GitHub-n0xnull-181717?logo=github&logoColor=white)](https://github.com/n0xnull)
 
-*Silent Guardian* is an original project by Abil Khosim.
-Released under the [MIT License](LICENSE) — © 2026 Abil Khosim. Please keep this
-attribution when reusing or redistributing.
+*Cove* is an original project by Abil Khosim, part of the **NoxNull** toolkit
+(Fathom · Flare · BlueForge · Cove · Tempest).
+Released under the [MIT License](LICENSE) — © 2026 Abil Khosim.
+Please keep this attribution when reusing or redistributing.
 
-<sub>Security, built like stone. 🛡️</sub>
+<sub>A sheltered bay for every child. 🛡️</sub>
 
 </div>
+
+<!-- GitHub topics: android, parental-control, parental-monitoring, kotlin, nextjs, supabase,
+mobile-app, dashboard, privacy, child-safety, family, keylogger, gps-tracking, self-hosted -->

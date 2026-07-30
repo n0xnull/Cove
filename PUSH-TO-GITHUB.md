@@ -1,32 +1,39 @@
-# 🚀 Panduan Push & Update ke GitHub — Silent Guardian
+# 🚀 Panduan Push & Update ke GitHub — Cove
 
 > Jalankan semua perintah dari folder proyek:
-> `cd "D:\Lab Kantor 2025\Github-Me\Project_4-Mobile_Apps\silent-guardian"`
+> `cd "D:\Lab Kantor 2025\Github-Me\Project_4-Mobile_Apps\Cove"`
 
 ---
 
 ## 0. Sekali saja: siapkan repo di GitHub
 
 1. Buka https://github.com/new
-2. Repository name: **silent-guardian**
-3. Owner: **abilithic** (pilih organisasi, bukan personal)
+2. Repository name: **Cove**
+3. Owner: **n0xnull** (pilih organisasi, bukan personal)
 4. Visibility: **Private** *(data monitoring bersifat sensitif)*
 5. **JANGAN** centang "Add a README / .gitignore / license" — biar tidak bentrok.
 6. Klik **Create repository**, lalu salin URL-nya
-   (mis. `https://github.com/abilithic/silent-guardian.git`).
+   (mis. `https://github.com/n0xnull/Cove.git`).
 
 ---
 
 ## 1. Sekali saja: inisialisasi git lokal & push pertama
 
 ```bash
-cd "D:\Lab Kantor 2025\Github-Me\Project_4-Mobile_Apps\silent-guardian"
+cd "D:\Lab Kantor 2025\Github-Me\Project_4-Mobile_Apps\Cove"
 
 git init
 git add .
-git commit -m "feat: Silent Guardian v1.0.0 - initial release"
+git commit -m "feat: Cove v1.0.0 - initial release"
 git branch -M main
-git remote add origin https://github.com/abilithic/silent-guardian.git
+git remote add origin https://github.com/n0xnull/Cove.git
+git push -u origin main
+```
+
+Jika remote sudah ada (repo pernah di-init sebelumnya):
+
+```bash
+git remote set-url origin https://github.com/n0xnull/Cove.git
 git push -u origin main
 ```
 
@@ -40,14 +47,14 @@ Personal Access Token (GitHub → Settings → Developer settings → Tokens (cl
 - Buka repo → ⚙️ (samping "About") → isi:
   - **Description**: `Invisible Android parental monitoring agent + Next.js dashboard. Self-hosted on Supabase.`
   - **Website**: URL Vercel dashboard kamu
-  - **Topics**: `android, parental-control, monitoring, kotlin, nextjs, supabase, mobile-app, dashboard, privacy`
+  - **Topics**: `android, parental-control, monitoring, kotlin, nextjs, supabase, mobile-app, dashboard, child-safety`
 
 ---
 
 ## 3. Deploy dashboard ke Vercel (sekali saja)
 
 1. Buka [vercel.com](https://vercel.com) → **Add New Project** → Import dari GitHub.
-2. Pilih repo `abilithic/silent-guardian`.
+2. Pilih repo `n0xnull/Cove`.
 3. Set **Root Directory** → `dashboard-web-parental`.
 4. Tambahkan **Environment Variables**:
 
@@ -64,7 +71,7 @@ Personal Access Token (GitHub → Settings → Developer settings → Tokens (cl
 ## 4. Alur UPDATE rutin (setiap ada perubahan kode)
 
 ```bash
-cd "D:\Lab Kantor 2025\Github-Me\Project_4-Mobile_Apps\silent-guardian"
+cd "D:\Lab Kantor 2025\Github-Me\Project_4-Mobile_Apps\Cove"
 
 git add -A
 git commit -m "fix: deskripsi perubahan singkat"
@@ -91,9 +98,9 @@ git push origin v1.1.0
 
 4. Buka GitHub → tab **Releases** → **Draft a new release**:
    - Tag: `v1.1.0`
-   - Title: `Silent Guardian v1.1.0`
+   - Title: `Cove v1.1.0`
    - Notes: ringkasan dari CHANGELOG.md
-   - Lampirkan file `SilentGuardian-v1.1.0.apk`
+   - Lampirkan file `Cove-v1.1.0.apk`
    - Klik **Publish release**.
 
 5. Upload APK ke dashboard: buka halaman **Unduh APK** → klik **Pilih File .apk** → upload.

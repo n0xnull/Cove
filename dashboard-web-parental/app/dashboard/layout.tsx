@@ -2,10 +2,11 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import {
-  ShieldCheck, MapPin, Smartphone, MessageSquare, BellRing, Moon,
-  LogOut, Menu, X, Bug, Phone, Bell, User, Package, Activity, Camera, Image, Mail, Keyboard, FileText,
+  MapPin, Smartphone, MessageSquare, BellRing, Moon,
+  LogOut, Menu, X, Bug, Phone, Bell, User, Package, Activity, Camera, Mail, Keyboard, FileText,
   Users, Aperture, Mic, HardDrive, Clapperboard, Baby, PackageOpen,
 } from 'lucide-react';
 import DeviceStatusPulse from '../../components/DeviceStatusPulse';
@@ -121,9 +122,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         {/* Brand header */}
         <div className="px-5 py-5 border-b border-borderDark flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <span className="p-2 bg-accentViolet/15 rounded-xl text-accentViolet ring-1 ring-accentViolet/20">
-              <ShieldCheck size={22} />
-            </span>
+            <Image src="/cove-icon-256.png" alt="Cove" width={36} height={36} className="rounded-xl" />
             <div>
               <span className="font-bold tracking-wide text-sm bg-gradient-to-r from-violetLight to-accentBlue bg-clip-text text-transparent">
                 Cove
@@ -223,9 +222,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       {/* Mobile Top Navbar */}
       <div className="md:hidden bg-cardBg border-b border-borderDark px-4 py-3 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="p-1.5 bg-accentViolet/10 rounded-lg text-accentViolet">
-            <ShieldCheck size={18} />
-          </span>
+          <Image src="/cove-icon-256.png" alt="Cove" width={28} height={28} className="rounded-lg" />
           <span className="font-bold text-sm tracking-wide bg-gradient-to-r from-violetLight to-accentBlue bg-clip-text text-transparent">
             Cove
           </span>

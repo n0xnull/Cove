@@ -2,7 +2,8 @@
 
 import React, { useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { ShieldCheck, KeyRound, Mail, Loader2, Eye, EyeOff, AlertCircle } from 'lucide-react';
+import Image from 'next/image';
+import { KeyRound, Mail, Loader2, Eye, EyeOff, AlertCircle } from 'lucide-react';
 import { signIn } from '../../lib/supabase';
 
 function LoginForm() {
@@ -39,8 +40,8 @@ function LoginForm() {
       <div className="relative w-full max-w-md glass-card rounded-2xl p-8 shadow-2xl shadow-black/50">
         {/* Brand */}
         <div className="flex flex-col items-center mb-8">
-          <div className="p-3.5 bg-accentViolet/10 rounded-2xl text-accentViolet mb-4 ring-1 ring-accentViolet/20 pulse-violet">
-            <ShieldCheck size={32} />
+          <div className="mb-4">
+            <Image src="/cove-icon-256.png" alt="Cove" width={72} height={72} className="rounded-2xl" priority />
           </div>
           <h1 className="text-2xl font-bold tracking-tight bg-gradient-to-r from-violetLight to-accentBlue bg-clip-text text-transparent">
             Cove

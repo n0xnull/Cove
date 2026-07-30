@@ -59,7 +59,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1. Buka dashboard Silent Guardian di browser orang tua.\n2. Login, lalu buka halaman Profil Orang Tua.\n3. Salin User ID (format UUID) dari halaman tersebut.\n4. Isi nama perangkat ini dan paste User ID di bawah.\n5. Klik Mulai Sinkronisasi dan izinkan semua akses yang diminta."
+                android:text="1. Buka dashboard Cove di browser orang tua.\n2. Login, lalu buka halaman Profil Orang Tua.\n3. Salin User ID (format UUID) dari halaman tersebut.\n4. Isi nama perangkat ini dan paste User ID di bawah.\n5. Klik Mulai Sinkronisasi dan izinkan semua akses yang diminta."
                 android:textSize="11sp"
                 android:textColor="#9CA3AF"
                 android:lineSpacingExtra="3dp" />
@@ -140,7 +140,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Silent Guardian v2.0 — Agent Android"
+            android:text="Cove v1.0 — Agent Android"
             android:textSize="10sp"
             android:textColor="#374151"
             android:layout_marginBottom="24dp" />

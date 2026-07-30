@@ -2,11 +2,11 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import NextImage from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import {
   MapPin, Smartphone, MessageSquare, BellRing, Moon,
-  LogOut, Menu, X, Bug, Phone, Bell, User, Package, Activity, Camera, Mail, Keyboard, FileText,
+  LogOut, Menu, X, Bug, Phone, Bell, User, Package, Activity, Camera, Image, Mail, Keyboard, FileText,
   Users, Aperture, Mic, HardDrive, Clapperboard, Baby, PackageOpen,
 } from 'lucide-react';
 import DeviceStatusPulse from '../../components/DeviceStatusPulse';
@@ -122,7 +122,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         {/* Brand header */}
         <div className="px-5 py-5 border-b border-borderDark flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <Image src="/cove-icon-256.png" alt="Cove" width={36} height={36} className="rounded-xl" />
+            <NextImage src="/cove-icon-256.png" alt="Cove" width={36} height={36} className="rounded-xl" />
             <div>
               <span className="font-bold tracking-wide text-sm bg-gradient-to-r from-violetLight to-accentBlue bg-clip-text text-transparent">
                 Cove
@@ -222,7 +222,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       {/* Mobile Top Navbar */}
       <div className="md:hidden bg-cardBg border-b border-borderDark px-4 py-3 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Image src="/cove-icon-256.png" alt="Cove" width={28} height={28} className="rounded-lg" />
+          <NextImage src="/cove-icon-256.png" alt="Cove" width={28} height={28} className="rounded-lg" />
           <span className="font-bold text-sm tracking-wide bg-gradient-to-r from-violetLight to-accentBlue bg-clip-text text-transparent">
             Cove
           </span>

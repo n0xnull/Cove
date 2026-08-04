@@ -244,8 +244,7 @@ knowledge and consent is illegal in most jurisdictions. See [DISCLAIMER.md](DISC
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Abil%20Khosim-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/abil-khosim-itsec/)
 [![GitHub](https://img.shields.io/badge/GitHub-n0xnull-181717?logo=github&logoColor=white)](https://github.com/n0xnull)
 
-*Cove* is an original project by Abil Khosim, part of the **NoxNull** toolkit
-(Fathom · Flare · BlueForge · Cove · Tempest).
+*Cove* is an original project by Abil Khosim, an independent security tool by Abil Khosim (NoxNull).
 Released under the [MIT License](LICENSE) — © 2026 Abil Khosim.
 Please keep this attribution when reusing or redistributing.
 
